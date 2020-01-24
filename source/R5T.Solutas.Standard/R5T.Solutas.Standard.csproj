@@ -4,4 +4,9 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>1701;1702;1591;1573</NoWarn>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\R5T.Megara.TextSerializer\source\R5T.Megara.TextSerializer\R5T.Megara.TextSerializer.csproj" />
+    <ProjectReference Include="..\..\..\R5T.Solutas.Megara\source\R5T.Solutas.Megara\R5T.Solutas.Megara.csproj" />
+    <ProjectReference Include="..\..\..\R5T.Solutas.Tiros\source\R5T.Solutas.Tiros\R5T.Solutas.Tiros.csproj" />
+  </ItemGroup>
 </Project>
