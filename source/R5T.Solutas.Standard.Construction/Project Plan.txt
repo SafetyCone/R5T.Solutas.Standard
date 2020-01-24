@@ -1,0 +1,4 @@
+R5T.Solutas.Standard.Construction - A construction console-app for the library R5T.Solutas.Standard.
+
+Goals
+
