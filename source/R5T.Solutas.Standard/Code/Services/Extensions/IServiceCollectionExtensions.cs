@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 
 using R5T.Cambridge.Types;
 using R5T.Megara.TextSerializer;
-using R5T.Stockholm;
 using R5T.Stockholm.Default;
 using R5T.Solutas.Megara;
 using R5T.Solutas.Tiros;
@@ -22,14 +21,10 @@ namespace R5T.Solutas.Standard
             services
                 .AddSingleton<IVisualStudioSolutionFileSerializer, VisualStudioSolutionFileSerializer>()
                 .AddTextFileSerializer<SolutionFile, VisualStudioSolutionFileTextSerializer>()
-                // Overstack options so that we DO get a byte-order-mark for Visual Studio solution files.
-                .AddSingleton<IStreamSerializerOptions<SolutionFile>>(serviceProvider =>
+                // Configue stream serializer options to use a byte-order-mark for Visual Studio solution files.
+                .Configure<StreamSerializerOptions<SolutionFile>>(options =>
                 {
-                    var streamSerializerOptions = new DefaultStreamOperatorOptions<SolutionFile>()
-                    {
-                        AddByteOrderMark = true,
-                    };
-                    return streamSerializerOptions;
+                    options.AddByteOrderMark = true;
                 })
                 ;
 
