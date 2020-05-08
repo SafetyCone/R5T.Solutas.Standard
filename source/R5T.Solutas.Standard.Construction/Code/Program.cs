@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using R5T.Chalandri;
 using R5T.Evosmos;
 using R5T.Ilioupoli.Default;
-using R5T.Richmond;
+using R5T.Liverpool;
 
 
 namespace R5T.Solutas.Standard.Construction
@@ -14,11 +14,12 @@ namespace R5T.Solutas.Standard.Construction
     {
         static void Main(string[] args)
         {
-            var serviceProvider = ServiceProviderBuilder.NewUseStartup<Startup>();
+            using (var serviceProvider = ServiceProviderServiceBuilder.New().UseStartupAndBuild<Startup>())
+            {
+                var program = serviceProvider.GetRequiredService<Program>();
 
-            var program = serviceProvider.GetRequiredService<Program>();
-
-            program.Run();
+                program.Run();
+            }
         }
 
 
